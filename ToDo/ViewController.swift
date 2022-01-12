@@ -29,6 +29,21 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
     }
     
+    // スワイプできるようにする
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
+        return true
+    }
+    
+    // 削除の操作がされた時の処理
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            InfoHelper().deleteItem(item: itemList[indexPath.row], token: token)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+                                    
+                                    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemList.count
     }
