@@ -83,15 +83,18 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="lOq-AD-BIE" id="1JT-2s-kCw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQf-GH-cMR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-730" y="187"/>
         </scene>
-        <!--View Controller-->
+        <!--Add View-->
         <scene sceneID="4t8-ip-5Nv">
             <objects>
-                <viewController id="IFH-JT-8y4" sceneMemberID="viewController">
+                <viewController id="IFH-JT-8y4" customClass="AddView" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fae-V2-JzE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,6 +123,9 @@
                                 <rect key="frame" x="173.5" y="402" width="67" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="onAdd:" destination="IFH-JT-8y4" eventType="touchUpInside" id="Lzj-6m-Vzp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GK8-Ug-M2V"/>
@@ -141,6 +147,10 @@
                             <constraint firstItem="kvo-68-WP2" firstAttribute="leading" secondItem="GK8-Ug-M2V" secondAttribute="leading" constant="20" id="xCZ-jK-DgC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="v9j-KO-CwG" id="INT-Ht-TjK"/>
+                        <outlet property="itemField" destination="kvo-68-WP2" id="Gsr-RP-Rq1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nnl-62-Bke" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
