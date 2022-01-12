@@ -27,14 +27,17 @@ class AddView: UIViewController {
     @IBAction func onAdd(_ sender: Any) {
         //  モデルクラスのインスタンスを作り、データを設定します。
         //  このインスタンスをRealmに保存します。
-        let item = TodoItem()
-        item.title = itemField.text!
-        item.date = datePicker.date
-        item.id = String(Int.random(in: 0...9999))
-        try! realm.write {
-           realm.add(item)
-        }
-        // 追加画面を閉じる
+//        let item = TodoItem()
+//        item.title = itemField.text!
+//        item.date = datePicker.date
+//        item.id = String(Int.random(in: 0...9999))
+//        try! realm.write {
+//           realm.add(item)
+//        }
+        
+        // InfoHelperに置き換える
+        InfoHelper().save(title: itemField.text!, date: datePicker.date)
+//        // 追加画面を閉じる
         dismiss(animated: true, completion: nil)
     }
     
