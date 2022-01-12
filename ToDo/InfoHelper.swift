@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import NotificationCenter
 
 class InfoHelper {
     
@@ -20,6 +21,8 @@ class InfoHelper {
         try! realm.write{
             realm.add(item)
         }
+        // ここでsetNotificationのメソッドをしようする,setNotification(item: item)とかくとエラー出る!
+        setNotification(item)
     }
     
     // dateをString型に変換
@@ -29,4 +32,14 @@ class InfoHelper {
         return formatter.string(from:date)
     }
     
+    // 通知の設定
+    func setNotification(_ item:TodoItem){
+        let targetDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute],from: item.date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: targetDate,repeats: false)
+        let content = UNMutableNotificationContent()
+        content.title = item.title
+        content.sound = .default
+        let request = UNNotificationRequest(identifier: item.id, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
 }
